@@ -32,7 +32,7 @@ router.post('/signup', async (req,res) =>
                 else {
                     console.log('user created');
                 }
-            })
+            });
         res.render('login');
     }
     catch {

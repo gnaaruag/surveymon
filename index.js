@@ -13,7 +13,6 @@ app.set('views','views');
 
 const loginSignup = require('./routes/loginSignup');
 
-
 app.use('/', loginSignup);
 
 db.connect(err => 
@@ -24,9 +23,6 @@ db.connect(err =>
         console.log('MySQL connected');
     }
 );
-
-
-
 
 app.listen(PORT, (req,res) => 
 {
