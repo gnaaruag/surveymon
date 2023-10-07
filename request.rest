@@ -18,3 +18,12 @@ Content-Type: application/json
     "password": "test"
 }
 
+###
+
+GET http://localhost:3000/create
+Content-Content-Type: application/json
+
+
+
+
+

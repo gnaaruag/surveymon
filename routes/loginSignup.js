@@ -13,6 +13,11 @@ router.get('/', (req,res) =>
     res.render('login');
 });
 
+router.get('/login', (req,res) => 
+{
+    res.render('login');
+});
+
 router.get('/signup', (req,res) => {
     res.render('signup')
 })
@@ -33,7 +38,7 @@ router.post('/signup', async (req,res) =>
                     console.log('user created');
                 }
             });
-        res.render('login');
+        res.redirect('login');
     }
     catch {
         res.status(500).send('something went wrong...');
@@ -50,7 +55,7 @@ router.post('/login' , async (req,res) =>
         }
         else {
             if (await bcrypt.compare(req.body.password, result[0].password)) {
-                res.send('succes');
+                res.redirect('dashboard');
             }
             else {
                 res.render('login')
@@ -58,9 +63,5 @@ router.post('/login' , async (req,res) =>
         }
     });
 });
-
-
-
-
 
 module.exports = router;

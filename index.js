@@ -12,8 +12,15 @@ app.set('view engine','ejs');
 app.set('views','views'); 
 
 const loginSignup = require('./routes/loginSignup');
+const dash = require('./routes/dash');
+const newsurvey = require('./routes/newsurvey');
+
+
 
 app.use('/', loginSignup);
+app.use('/', dash);
+app.use('/', newsurvey);
+
 
 db.connect(err => 
     {
