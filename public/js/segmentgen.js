@@ -1,17 +1,20 @@
+let qCount = 0;
 function generateSegment() {
+    qCount++;
+    console.log(qCount);
     const segmentContainer = document.getElementById('segmentContainer');
-    
 
-    // Create a question input
+    // question
     const questionInput = document.createElement('input');
     questionInput.type = 'text';
     questionInput.placeholder = 'Enter your question';
+    questionInput.name = `question${qCount}`;
     segmentContainer.appendChild(questionInput);
 
-    // Create a radio button for "required" or "not required"
+    // radio buttons
     const requiredRadio = document.createElement('input');
     requiredRadio.type = 'radio';
-    requiredRadio.name = 'required';
+    requiredRadio.name = `reqCheck${qCount}`;
     requiredRadio.value = 'required';
     requiredRadio.id = 'requiredRadio';
     segmentContainer.appendChild(requiredRadio);
@@ -22,7 +25,7 @@ function generateSegment() {
 
     const notRequiredRadio = document.createElement('input');
     notRequiredRadio.type = 'radio';
-    notRequiredRadio.name = 'required';
+    notRequiredRadio.name = `reqCheck${qCount}`;
     notRequiredRadio.value = 'notRequired';
     notRequiredRadio.id = 'notRequiredRadio';
     segmentContainer.appendChild(notRequiredRadio);
@@ -35,6 +38,7 @@ function generateSegment() {
     for (let i = 1; i <= 4; i++) {
         const optionInput = document.createElement('input');
         optionInput.type = 'text';
+        optionInput.name = `question ${qCount} option ${i}`;
         optionInput.placeholder = `Option ${i}`;
         segmentContainer.appendChild(optionInput);
     }

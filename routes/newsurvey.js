@@ -44,4 +44,9 @@ router.get('/create/:id', (req,res) => {
     res.render('newsurvey');
 });
 
+router.post('/success', (req,res) => {
+    console.log(req.body);
+    res.redirect('dashboard');
+});
+
 module.exports = router;
