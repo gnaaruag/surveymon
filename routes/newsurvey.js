@@ -4,6 +4,7 @@ const router = express.Router();
 
 const db = require('../db/db');
 const { parse } = require('dotenv');
+const { json } = require('body-parser');
 
 
 router.get('/create', (req,res)=> {
@@ -45,8 +46,33 @@ router.get('/create/:id', (req,res) => {
 });
 
 router.post('/success', (req,res) => {
-    console.log(req.body);
     res.redirect('dashboard');
+    var objlen = Object.keys(req.body).length / 6;
+    var keys = Object.keys(req.body);
+    console.log(typeof(keys[0]))
+    console.log(keys);
+    jsonObjSend = {};
+    var i = 0;
+    while (true) {
+        if (i == objlen) {
+            break;
+        }
+        else {
+            var j = 6 * i;
+            jsonObjInst =  {
+                "question" : req.body[keys[j]],
+                "reqCheck" : req.body[keys[j+1]],
+                "opt1" : req.body[keys[j+2]],
+                "opt2" : req.body[keys[j+3]],
+                "opt3" : req.body[keys[j+4]],
+                "opt4" : req.body[keys[j+5]],
+
+            };
+            jsonObjSend[`question${i+1}`] = jsonObjInst
+        }
+        i++;
+    }
+    // console.log(JSON.stringify(jsonObjSend));
 });
 
 module.exports = router;
